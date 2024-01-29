@@ -16,7 +16,6 @@ def subiect1():
     print("Dimensiunea fisierului dupa gestionarea valorilor lipsa =", len(df))
     # Am transformat variabila Pclass in variabila numerica:
     df = encode(df, 'Pclass')
-    print(df)
     
     
     # definirea modelului pymc3
@@ -60,6 +59,7 @@ def subiect1():
     n_age = 30
     n_pclass = '2a'
     n_data = {'Age':n_age, 'Pclass':n_pclass}
+    # Am transformat variabila Pclass in variabila numerica
     n_data = encode(n_data,'Pclass')
     pi_new = pm.math.sigmoid(mean_alpha + mean_beta1 * n_data['Pclass'] + mean_beta2 * n_data['Age'])
     hdi_90 = az.hdi(pi_new, hdi_prob=0.9)
